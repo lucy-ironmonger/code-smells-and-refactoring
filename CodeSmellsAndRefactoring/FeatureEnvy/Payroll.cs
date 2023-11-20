@@ -9,11 +9,6 @@
             this._employee = employee;
         }
 
-        public Employee Employee
-        {
-            get { return _employee; }
-        }
-
         public double CalculateTax()
         {
             var baseTaxRate = GetBaseTaxRate(_employee.Department);
