@@ -17,11 +17,6 @@
             return double.Round(_employee.Salary * (baseTaxRate - serviceYearsBonus));
         }
 
-        public string GeneratePaySlip()
-        {
-            return $"Name: {_employee.Name}\nDepartment: {_employee.Department}\nSalary: {_employee.Salary}\nTax: {CalculateTax()}\n";
-        }
-
         private static double GetBaseTaxRate(string department)
         {
             return department switch

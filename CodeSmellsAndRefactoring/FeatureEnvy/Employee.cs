@@ -58,5 +58,43 @@
 
             return this.VacationDays * (this.Salary / 20) * vacationRate;
         }
+
+        public string EvaluatePerformance()
+        {
+            var score = 0;
+
+            score += this.WorkHours > 1800 ? 10 : 0;
+            score -= this.VacationDays > 12 ? 5 : 0;
+            score += this.YearsOfService > 3 ? 5 : 0;
+            score += this.WorkHours > 2000 && this.Department == "Engineering" ? 10 : 0;
+            score -= this.VacationDays > 15 ? 5 : 0;
+
+            if (score > 15)
+            {
+                return "Outstanding";
+            }
+            else if (score > 10)
+            {
+                return "Excellent";
+            }
+            else if (score > 5)
+            {
+                return "Good";
+            }
+            else
+            {
+                return "Needs Improvement";
+            }
+        }
+
+        public string GeneratePerformanceReport(PerformanceReview performanceReview)
+        {
+            return $"Employee: {this.Name}\nDepartment: {this.Department}\nPerformance: {this.EvaluatePerformance()}\nYears of Service: {this.YearsOfService}\n";
+        }
+
+        public string GeneratePaySlip(Payroll payroll)
+        {
+            return $"Name: {this.Name}\nDepartment: {this.Department}\nSalary: {this.Salary}\nTax: {payroll.CalculateTax()}\n";
+        }
     }
 }

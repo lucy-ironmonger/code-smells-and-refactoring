@@ -18,7 +18,7 @@ namespace CodeSmellsAndRefactoring.Tests.FeatureEnvy.SmellyTests
             var employee = new Employee("Jane Doe", department, 50000, workHours, vacationDays, yearsOfService);
             var review = new PerformanceReview(employee);
 
-            var rating = review.EvaluatePerformance();
+            var rating = review.Employee.EvaluatePerformance();
 
             Assert.Equal(expectedRating, rating);
         }
@@ -31,7 +31,7 @@ namespace CodeSmellsAndRefactoring.Tests.FeatureEnvy.SmellyTests
 
             const string expectedReport = $"Employee: Jane Doe\nDepartment: Engineering\nPerformance: Outstanding\nYears of Service: 4\n";
 
-            var report = review.GeneratePerformanceReport();
+            var report = review.Employee.GeneratePerformanceReport(review);
 
             Assert.Equal(expectedReport, report);
         }
