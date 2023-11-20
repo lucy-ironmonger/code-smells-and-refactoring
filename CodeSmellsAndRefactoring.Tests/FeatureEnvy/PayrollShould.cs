@@ -41,9 +41,8 @@ namespace CodeSmellsAndRefactoring.Tests.FeatureEnvy
         public void calculate_the_correct_amount_of_overtime_pay(int workHours, double salary, double expectedOvertimePay)
         {
             var employee = new Employee("John Doe", "Engineering", salary, workHours, 10, 5);
-            var payroll = new Payroll(employee);
 
-            var overtimePay = payroll.CalculateOvertimePay();
+            var overtimePay = employee.CalculateOvertimePay();
 
             Assert.Equal(expectedOvertimePay, overtimePay);
         }
@@ -66,9 +65,8 @@ namespace CodeSmellsAndRefactoring.Tests.FeatureEnvy
         public void calculate_the_correct_amount_of_holiday_pay(int vacationDays, double salary, double expectedVacationPay)
         {
             var employee = new Employee("John Doe", "Engineering", salary, 2000, vacationDays, 5);
-            var payroll = new Payroll(employee);
 
-            var holidayPay = payroll.CalculateHolidayPay();
+            var holidayPay = employee.CalculateHolidayPay();
 
             Assert.Equal(expectedVacationPay, holidayPay);
         }
@@ -81,9 +79,8 @@ namespace CodeSmellsAndRefactoring.Tests.FeatureEnvy
         public void determine_whether_an_employee_is_eligible_for_promotion(int workHours, int vacationDays, int yearsOfService, bool expectedEligibility)
         {
             var employee = new Employee("John Doe", "Engineering", 50000, workHours, vacationDays, yearsOfService);
-            var payroll = new Payroll(employee);
 
-            var isEligible = payroll.IsEligibleForPromotion();
+            var isEligible = employee.IsEligibleForPromotion();
 
             Assert.Equal(expectedEligibility, isEligible);
         }
@@ -114,7 +111,7 @@ namespace CodeSmellsAndRefactoring.Tests.FeatureEnvy
             var employee = new Employee("Jane Doe", "Engineering", 50000, -2000, 10, 5);
             var payroll = new Payroll(employee);
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => payroll.CalculateOvertimePay());
+            Assert.Throws<ArgumentOutOfRangeException>(() => employee.CalculateOvertimePay());
         }
     }
 }

@@ -33,5 +33,30 @@
                 throw new ArgumentOutOfRangeException(nameof(this.WorkHours), "Work hours cannot be negative.");
             }
         }
+
+        public bool IsEligibleForPromotion()
+        {
+            var meetsWorkHourCriteria = this.WorkHours > 2000;
+            var meetsVacationCriteria = this.VacationDays < 10;
+            var meetsServiceCriteria = this.YearsOfService > 3;
+
+            return meetsWorkHourCriteria && meetsVacationCriteria && meetsServiceCriteria;
+        }
+
+        public double CalculateOvertimePay()
+        {
+            if (this.WorkHours <= 40)
+            {
+                return 0.0;
+            }
+            return (this.WorkHours - 40) * (this.Salary / 40) * 1.5;
+        }
+
+        public double CalculateHolidayPay()
+        {
+            var vacationRate = this.VacationDays > 15 ? 0.8 : 1.0;
+
+            return this.VacationDays * (this.Salary / 20) * vacationRate;
+        }
     }
 }
