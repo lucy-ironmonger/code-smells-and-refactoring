@@ -5,6 +5,8 @@ namespace CodeSmellsAndRefactoring.Tests.FeatureEnvy.SmellyTests
 {
     // Do we need this test?
     // How else could we tell if an Employee was constructed correctly?
+    // A: Could we put in invariance checks into the constructor to establish the rules, and then have the tests monitor for any 
+    // exceptions thrown?
     public class EmployeeShould
     {
         [Fact]

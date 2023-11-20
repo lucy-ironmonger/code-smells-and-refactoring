@@ -11,16 +11,6 @@
 
         public double CalculateTax()
         {
-            if (_employee.Salary <= 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(_employee.Salary), "Salary must be greater than zero.");
-            }
-
-            if (_employee.YearsOfService < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(_employee.YearsOfService), "Years of service cannot be negative.");
-            }
-
             var baseTaxRate = GetBaseTaxRate(_employee.Department);
             var serviceYearsBonus = _employee.YearsOfService >= 5 ? 0.02 : 0.0;
 
@@ -29,11 +19,6 @@
 
         public double CalculateOvertimePay()
         {
-            if (_employee.WorkHours < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(_employee.WorkHours), "Work hours cannot be negative.");
-            }
-
             if (_employee.WorkHours <= 40)
             {
                 return 0.0;

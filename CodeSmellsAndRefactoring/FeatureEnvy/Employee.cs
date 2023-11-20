@@ -17,6 +17,21 @@
             WorkHours = workHours;
             VacationDays = vacationDays;
             YearsOfService = yearsOfService;
+            
+            if (this.Salary <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(this.Salary), "Salary must be greater than zero.");
+            }
+
+            if (this.YearsOfService < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(this.YearsOfService), "Years of service cannot be negative.");
+            }
+            
+            if (this.WorkHours < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(this.WorkHours), "Work hours cannot be negative.");
+            }
         }
     }
 }
